@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG官网 | 站点介绍与可信说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #faf8f5;
+      font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      color: #2e2b27;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+    }
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #fffcf9;
+      border-radius: 28px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.5rem;
+    }
+    @media (max-width: 600px) {
+      body { padding: 1rem 0.8rem; }
+      .container { padding: 2rem 1.2rem; border-radius: 20px; }
+    }
+
+    /* 主视觉区域 */
+    .hero {
+      text-align: center;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid #ece5dd;
+      margin-bottom: 2.5rem;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #3e352b;
+      margin-bottom: 0.4rem;
+    }
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #7a6f64;
+      border-left: 4px solid #c6b6a8;
+      display: inline-block;
+      padding-left: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(140, 120, 100, 0.06);
+      border: 1px solid #f0eae3;
+    }
+    .card h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #4d4036;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #ede4db;
+    }
+    .card p {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 用途卡片 - 三列网格 */
+    .purpose-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.2rem 0 0.5rem;
+    }
+    .purpose-item {
+      background: #f7f3ef;
+      border-radius: 14px;
+      padding: 1.2rem 0.8rem;
+      text-align: center;
+      border: 1px solid #e8dfd6;
+      transition: background 0.2s;
+    }
+    .purpose-item:hover {
+      background: #f0e8e0;
+    }
+    .purpose-item .emoji-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .purpose-item .label {
+      font-weight: 500;
+      color: #4a3f35;
+      font-size: 0.95rem;
+    }
+    .purpose-item .desc {
+      color: #6f6357;
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+    @media (max-width: 600px) {
+      .purpose-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+    }
+
+    /* 适合人群 */
+    .audience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      margin: 1rem 0 0.2rem;
+    }
+    .audience-tags span {
+      background: #f0e9e2;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #4f4238;
+      border: 1px solid #e1d5ca;
+    }
+
+    /* 引用块 / 提示框 */
+    .note-box {
+      background: #f4efe9;
+      border-left: 6px solid #b7a28f;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      margin: 1.8rem 0;
+      font-size: 0.98rem;
+      color: #3f362f;
+    }
+    .note-box strong {
+      color: #5c4d3f;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #fcf9f6;
+      padding: 1.4rem 1.8rem;
+      border-radius: 16px;
+      border: 1px solid #e9dfd5;
+      margin-top: 1rem;
+    }
+    .link-paragraph a {
+      color: #8a6b4f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #d4c2b2;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .link-paragraph a:hover {
+      color: #5c4432;
+      border-bottom-color: #5c4432;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin-top: 2rem;
+    }
+    .faq-item {
+      padding: 0.8rem 0;
+      border-bottom: 1px dashed #e4dbd1;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 500;
+      color: #4b3e33;
+    }
+    .faq-a {
+      color: #695d50;
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+      padding-left: 0.5rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ede4db;
+      margin: 1.5rem 0;
+    }
+    .footer-meta {
+      font-size: 0.85rem;
+      color: #9c8e7e;
+      text-align: center;
+      margin-top: 2rem;
+      border-top: 1px solid #f0e8e0;
+      padding-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 主视觉 -->
+  <div class="hero">
+    <h1>PG官网 · 信息指引</h1>
+    <div class="sub">面向开发与使用者的可信说明</div>
+  </div>
+
+  <!-- 站点介绍卡片 -->
+  <div class="card">
+    <h2>站点定位与背景</h2>
+    <p>PG（Pocket Games）是一套专注于轻量级、跨平台游戏及应用的框架体系。本站 <strong>official-web-pgsoft.com</strong> 作为官方信息聚合渠道，提供关于核心组件、开发工具、版本迭代以及生态合作的基础介绍。</p>
+    <p>内容以资料整理和方向说明为主，不涉及具体项目运营或资金往来，致力于帮助访问者建立对 PG 技术栈的客观认知。所有引用信息均以官方公开文档为依据，保持克制与中性。</p>
+  </div>
+
+  <!-- 用途卡片 -->
+  <div class="card">
+    <h2>主要用途</h2>
+    <div class="purpose-grid">
+      <div class="purpose-item">
+        <span class="emoji-icon">📘</span>
+        <div class="label">技术概览</div>
+        <div class="desc">了解框架结构、API 风格与集成方式</div>
+      </div>
+      <div class="purpose-item">
+        <span class="emoji-icon">🔍</span>
+        <div class="label">资源索引</div>
+        <div class="desc">查阅 SDK、文档与社区参考链接</div>
+      </div>
+      <div class="purpose-item">
+        <span class="emoji-icon">🧩</span>
+        <div class="label">场景适配</div>
+        <div class="desc">了解在 Web、桌面及移动端的典型用法</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 适合人群 -->
+  <div class="card">
+    <h2>适合人群</h2>
+    <div class="audience-tags">
+      <span>前端开发者</span>
+      <span>技术评估者</span>
+      <span>项目集成方</span>
+      <span>框架研究者</span>
+      <span>对轻量方案感兴趣的团队</span>
+    </div>
+    <p style="margin-top: 1rem;">无论你是希望快速评估 PG 是否匹配当前项目，还是想系统了解其设计思路，本站提供的说明和链接都能成为可靠的起点。</p>
+  </div>
+
+  <!-- 自然链接段落（嵌入 PG官网） -->
+  <div class="link-paragraph">
+    <p>如果你希望直接获取最新发布包、变更日志以及官方维护的示例库，最直接的途径是访问 <a href="https://official-web-pgsoft.com">PG官网</a>。该站点持续更新，并提供多语言的技术文档摘要，是深入理解 PG 能力边界的第一手来源。下方 FAQ 也梳理了一些常见疑问，可供参考。</p>
+  </div>
+
+  <!-- 提示框 / 引用块 -->
+  <div class="note-box">
+    <strong>关于可信性说明：</strong> 本站所有指向 <strong>official-web-pgsoft.com</strong> 的链接均直接导向该域名下的资源，不经过中间跳转或重写。页面内容仅基于公开可查的信息整理，不对第三方应用或衍生服务做背书。建议结合自身需求进一步核实。
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary card">
+    <h2>常见问题摘要</h2>
+    <div class="faq-item">
+      <div class="faq-q">Q: PG 与常见游戏引擎有何区别？</div>
+      <div class="faq-a">A: PG 更强调轻量、快速集成与跨平台一致性，不依赖重型运行时，适合对包体积和启动速度有要求的场景。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 是否有官方示例或模板？</div>
+      <div class="faq-a">A: 是的。通过 PG官网 可以找到官方维护的 starter 项目以及组件库，涵盖多种常见交互模式。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 文档是否支持离线阅读？</div>
+      <div class="faq-a">A: 官方提供 PDF 快照和静态打包版本，具体获取方式请参考站点内的「资源」说明。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 遇到兼容性问题应如何反馈？</div>
+      <div class="faq-a">A: 建议先复查文档中的环境要求列表，仍无法解决可通过官方渠道提交 issue，会有维护者定期跟进。</div>
+    </div>
+  </div>
+
+  <!-- 结尾 -->
+  <div class="footer-meta">
+    本页内容仅供信息参考 · 保持客观与克制
+  </div>
+
+</div>
+</body>
+</html>
