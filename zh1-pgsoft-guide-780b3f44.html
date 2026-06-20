@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+    <title>再访 · 收藏 PG官网 的日常理由</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f8fa;
+            color: #1f2a36;
+            line-height: 1.65;
+            padding: 20px 16px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 760px;
+            width: 100%;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 8px 28px rgba(30, 65, 80, 0.06), 0 2px 6px rgba(20, 55, 70, 0.03);
+            padding: 32px 24px 48px;
+            transition: box-shadow 0.2s;
+        }
+
+        /* 网格卡片背景 — 蓝绿色点缀 */
+        .card-grid-bg {
+            position: relative;
+            background-image:
+                radial-gradient(circle at 18% 24%, rgba(0, 148, 133, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 82% 76%, rgba(22, 163, 145, 0.05) 0%, transparent 50%),
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0, 138, 120, 0.015) 20px, rgba(0, 138, 120, 0.015) 21px);
+            border-radius: 24px;
+            padding: 4px;
+        }
+
+        .inner-content {
+            background: white;
+            border-radius: 22px;
+            padding: 20px 4px 12px;
+        }
+
+        /* 文章标题 */
+        .post-header {
+            border-bottom: 1px solid #e5ecef;
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .post-title {
+            font-size: 2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #10343b;
+            margin-bottom: 8px;
+            background: linear-gradient(145deg, #0b4b4a 0%, #1a7a6f 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: #5d737c;
+            margin: 6px 0 10px;
+        }
+
+        .post-meta span {
+            background: #ecf3f0;
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-weight: 450;
+        }
+
+        .post-excerpt {
+            font-size: 1.1rem;
+            color: #2f4a54;
+            background: #f0f7f4;
+            padding: 14px 18px;
+            border-radius: 60px 16px 16px 60px;
+            border-left: 5px solid #199782;
+            margin: 16px 0 0;
+            line-height: 1.5;
+        }
+
+        /* 正文段落 网格卡片风格 */
+        .text-card {
+            background: #fbfdfd;
+            border-radius: 20px;
+            padding: 20px 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(25, 110, 95, 0.04);
+            border: 1px solid #dfe9e6;
+            transition: box-shadow 0.15s;
+        }
+
+        .text-card:hover {
+            box-shadow: 0 4px 14px rgba(0, 118, 105, 0.06);
+        }
+
+        .text-card h3 {
+            font-size: 1.2rem;
+            font-weight: 520;
+            color: #07544b;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .text-card h3::before {
+            content: "◆";
+            font-size: 0.9rem;
+            color: #1a9e86;
+            opacity: 0.7;
+        }
+
+        .text-card p {
+            margin-bottom: 10px;
+            color: #1f353e;
+        }
+
+        /* 引用提示 block */
+        .insight-block {
+            background: #eaf3f0;
+            border-radius: 40px 16px 16px 40px;
+            padding: 16px 24px;
+            margin: 28px 0 20px;
+            border-left: 6px solid #0f8d78;
+            font-style: normal;
+            position: relative;
+        }
+
+        .insight-block p {
+            font-size: 1rem;
+            color: #1e4441;
+            font-weight: 445;
+        }
+
+        .insight-block .quote-source {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #3b6b63;
+            font-weight: 400;
+        }
+
+        /* 访问句 — 蓝绿色点缀按钮感 */
+        .visit-statement {
+            margin: 32px 0 12px;
+            text-align: center;
+            background: #ecf7f3;
+            padding: 22px 14px;
+            border-radius: 80px 18px 18px 80px;
+            border: 1px solid #c7ddd6;
+        }
+
+        .visit-statement p {
+            font-size: 1.2rem;
+            font-weight: 470;
+            color: #12433d;
+        }
+
+        .visit-statement a {
+            color: #0b6b5e;
+            background: #d6ede6;
+            padding: 2px 10px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 520;
+            transition: background 0.15s, color 0.1s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .visit-statement a:hover {
+            background: #b9dfd4;
+            color: #054e42;
+            border-bottom: 2px solid #0b7f6b;
+        }
+
+        /* FAQ 摘要块 - 轻量化 */
+        .faq-mini {
+            margin: 28px 0 8px;
+        }
+
+        .faq-item {
+            padding: 10px 0 6px;
+            border-bottom: 1px dashed #d7e2de;
+        }
+
+        .faq-q {
+            font-weight: 510;
+            color: #0a5349;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-q::before {
+            content: "▹";
+            color: #199782;
+            font-size: 1.1rem;
+        }
+
+        .faq-a {
+            margin: 4px 0 6px 28px;
+            color: #33555a;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #0f7b67;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b0cfc4;
+        }
+
+        .faq-a a:hover {
+            color: #06483e;
+            text-decoration-color: #199782;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dfe9e6;
+            margin: 28px 0 18px;
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: #67828b;
+            text-align: center;
+            margin-top: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* 移动端友好 */
+        @media (max-width: 520px) {
+            .page-wrap {
+                padding: 20px 12px 32px;
+                border-radius: 20px;
+            }
+
+            .post-title {
+                font-size: 1.7rem;
+            }
+
+            .text-card {
+                padding: 16px 14px;
+            }
+
+            .visit-statement {
+                padding: 16px 10px;
+            }
+
+            .visit-statement p {
+                font-size: 1.05rem;
+            }
+
+            .insight-block {
+                padding: 14px 16px;
+            }
+
+            .post-excerpt {
+                font-size: 1rem;
+                padding: 12px 14px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .post-title {
+                font-size: 1.4rem;
+            }
+
+            .text-card h3 {
+                font-size: 1rem;
+            }
+        }
+
+        /* 辅助手感 */
+        ::selection {
+            background: #b2dfd0;
+            color: #072e28;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap card-grid-bg">
+        <div class="inner-content">
+
+            <!-- 文章头部 -->
+            <header class="post-header">
+                <h1 class="post-title">再访的理由：收藏 PG官网 的日常质感</h1>
+                <div class="post-meta">
+                    <span>📌 常去角落</span>
+                    <span>🌿 蓝绿笔记</span>
+                    <span>🔄 持续关注</span>
+                </div>
+                <div class="post-excerpt">
+                    有些网站值得留在标签栏很久——不是因为必须，而是每次打开都有种「对了」的熟悉感。<br>
+                    这次聊聊为什么我把 <a href="https://zh1-pgsoft.com" style="color:#0a6b5b; text-decoration: underline; text-underline-offset: 3px;">PG官网</a> 当作一个常驻书签。
+                </div>
+            </header>
+
+            <!-- 正文卡片 1 -->
+            <div class="text-card">
+                <h3>从偶然到习惯</h3>
+                <p>第一次找到 <a href="https://zh1-pgsoft.com" style="color:#0a6b5b; text-decoration: underline; text-underline-offset: 2px;">PG官网</a> 是某次搜索时的意外收获。后来发现它的内容更新并不喧闹，但每次再打开，总有些新的细节——或许是界面的微调，或许是某个模块的排序变化。这种「不打扰的更新」反而让我更愿意定期回访。</p>
+                <p>收藏夹里躺过太多链接，能保留超过两个月的很少。而 PG官网 是那种你不会刻意想起，但每次顺手点开都不会失望的地方。干净、直接，没有强推的信息流。</p>
+            </div>
+
+            <!-- 正文卡片 2 -->
+            <div class="text-card">
+                <h3>收藏，是为了留一个入口</h3>
+                <p>我习惯把常看的网页放在浏览器书签栏的第二层级，PG官网 就在那个“日常”文件夹里。不是因为它多特别，而是它的调性很稳定——不换皮肤、不改主结构、不突然弹窗。对于我这种轻度强迫症来说，这种一致性本身就是一种舒适。</p>
+                <p>而且它的加载速度一直不错，移动端适配也自然。有几次在通勤路上用手机打开，排版依然清晰，没有诡异的缩放。这些细节累积起来，就成了留下的理由。</p>
+            </div>
+
+            <!-- 引用提示（生活化语气） -->
+            <div class="insight-block">
+                <p>“一个网站如果值得被再次打开，那它一定在某个细微处尊重了用户的注意力。PG官网 给我的感觉就是：它在那里，不急，也不躲。”</p>
+                <span class="quote-source">—— 来自一位常驻访问者的笔记</span>
+            </div>
+
+            <!-- 正文卡片 3：持续关注的角度 -->
+            <div class="text-card">
+                <h3>持续关注，但不刻意</h3>
+                <p>我没有订阅 PG官网 的任何推送，只是隔一两周会主动点开书签。这种节奏很舒服——不会错过什么重大变化，也不会被信息轰炸。有时候只是看两眼首页，有时候会顺着链接翻几页。它像一个安静的站点，不追着用户跑，反而让人更想靠近。</p>
+                <p>如果你也喜欢这种「不费力的关注」，或许可以试着把 <a href="https://zh1-pgsoft.com" style="color:#0a6b5b; text-decoration: underline; text-underline-offset: 2px;">PG官网</a> 放进收藏夹的某个角落。不用刻意记忆，下次需要时它就在那里。</p>
+            </div>
+
+            <!-- 访问句（核心 a 标签自然嵌入） -->
+            <div class="visit-statement">
+                <p>🔖 如果你还没收藏，不妨现在打开 <a href="https://zh1-pgsoft.com">PG官网</a> 感受一下——也许它也会成为你书签栏里那个安静的存在。</p>
+            </div>
+
+            <!-- FAQ 摘要（轻量，不重复章节名） -->
+            <div class="faq-mini">
+                <div class="faq-item">
+                    <div class="faq-q">每次访问 PG官网 都需要重新找入口吗？</div>
+                    <div class="faq-a">完全不用。把它加入书签或者记住 <a href="https://zh1-pgsoft.com">PG官网</a> 这个地址，下次直接打开就好。页面结构很稳定，不会突然变样。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">移动端和桌面端体验差别大吗？</div>
+                    <div class="faq-a">差别很小。PG官网 在手机浏览器上同样友好，排版会自动适配，不需要双指缩放。我经常在 iPad 和手机之间切换，体验很连贯。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">网站内容更新频繁吗？会不会错过什么？</div>
+                    <div class="faq-a">更新节奏适中，不会每天轰炸。隔一两周上去看看，基本能覆盖主要变化。没有紧迫感，适合佛系关注。</div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="footer-note">
+                日常收藏 · 不打扰的访问节奏 · 蓝绿之间
+            </div>
+
+        </div> <!-- inner-content -->
+    </div> <!-- page-wrap -->
+</body>
+</html>
